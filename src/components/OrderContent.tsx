@@ -1,21 +1,42 @@
-import { OrderItem } from "../types"
+import { formartCurrency } from "../helpers/helpers"
+import { MenuItems, OrderItem } from "../types"
 
 type OrderContentProps = {
-  order : OrderItem[]
+  order : OrderItem[],
+  removeItem: (id:MenuItems["id"]) => void
 }
 
-export default function OrderContent({order} : OrderContentProps) {
+export default function OrderContent({order, removeItem} : OrderContentProps) {
   return (
     <div>
       <h2 className="font-black text-4xl">Consumo</h2>
 
-      <div className="space-y-3 mt-5">
+      <div className="space-y-3 mt-10">
         {order.length === 0 ? 
           <p className="text-center">La orden esta vacia</p>
           : (
             order.map(item => (
-              <div key={item.id}>
-                <p>{item.name}</p>
+              <div
+              className="flex justify-between border-t border-gray-200 py-5 last-of-type:border-b" 
+              key={item.id}
+              >
+                <div>
+                  <p className="text-lg">
+                    {item.name} - {formartCurrency(item.price)}
+                  </p>
+
+                  <p className="font-black">
+                      Cantidad:{item.quantity} - {formartCurrency(item.quantity*item.price)}
+                  </p>
+                </div>
+               
+
+                <button
+                  className="bg-red-600 h-8 w-8 rounded-full text-white"
+                  onClick={()=>removeItem(item.id)}
+                >
+                  X
+                </button>
               </div>
             ))
           )
