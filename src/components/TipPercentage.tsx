@@ -1,5 +1,5 @@
 type TipPercentageProps = {
-    setTip : React.Dispatch<React.SetStateAction<number>>
+    setTip : React.Dispatch<React.SetStateAction<number>>,
 }
 
 const tipOptions = [
