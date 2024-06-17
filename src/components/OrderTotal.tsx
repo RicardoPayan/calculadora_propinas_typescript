@@ -4,11 +4,12 @@ import { formartCurrency } from "../helpers/helpers"
 
 type OrderTotalProps = {
     order:OrderItem[],
-    tip:number
+    tip:number,
+    placeOrder:()=>void
 }
 
 
-export default function OrderTotal({order, tip}:OrderTotalProps) {
+export default function OrderTotal({order, tip, placeOrder}:OrderTotalProps) {
 
     const subTotalAmount = useMemo(() => order.reduce((total,item)=> total + (item.quantity*item.price), 0),[order])
 
@@ -28,12 +29,16 @@ export default function OrderTotal({order, tip}:OrderTotalProps) {
             </p>
 
             <p>Total:  {""}
-                <span className="font-bold">$0</span>
+                <span className="font-bold">{formartCurrency(subTotalAmount+tipAmount)}</span>
             </p>
         </div>
 
-        <button>
-
+        <button
+            className="text-white font-bold mt-10  w-full bg-black p-3 uppercase disabled:opacity-10"
+            disabled={subTotalAmount+tipAmount === 0}
+            onClick={placeOrder}
+        >
+            Guardar Orden
         </button>
     </>
   )
