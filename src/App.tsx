@@ -9,7 +9,6 @@ function App() {
 
   const {order,addItem, removeItem, tip, setTip, placeOrder} = useOrder()
 
-  console.log(tip)
   return (
     <>
       <header className="bg-teal-400 py-5">
