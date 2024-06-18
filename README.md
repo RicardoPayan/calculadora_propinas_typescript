@@ -23,4 +23,7 @@ The Restaurant Tip Calculator is designed to help users quickly and accurately c
 
   ### TailwindCSS
   The user interface is designed using TailwindCSS, a utility-first CSS framework that allows for rapid UI development without writing custom CSS.
-  
+
+ ## Demo
+You can view a live demo of the application deployed on Netlify [here](https://ripayani-calculadorapropinas-ts.netlify.app).
+
